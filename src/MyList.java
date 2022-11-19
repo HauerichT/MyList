@@ -62,8 +62,8 @@ public class MyList {
         }
 
         // fügt alle Elemente nach der zu löschenden Zahl hinzu
-        for (int i = index+1; i < array.length; i++) {
-            arrayNew[i-1] = array[i];
+        for (int i = index; i < arrayNew.length; i++) {
+            arrayNew[i] = array[i+1];
         }
 
         // weist der Variable array das neue Array zu
@@ -76,42 +76,52 @@ public class MyList {
     // Methode löscht doppelte Elemente
     public int removeDuplicates() {
 
+
         // Variable zur Speicherung der aktuellen Array-Länge
-        int arrayEnd = array.length;
 
         // Variable zur Speicherung der Anzahl von gelöschten Elementen
         int deleteCounter = 0;
 
         // prüft, ob Elemente doppelt vorkommen und löscht diese
-        for (int i = 0; i < arrayEnd; i++) {
-            for (int j = i + 1; j < arrayEnd; j++) {
-                if (array[i] == array[j]) {
-                    removeFromList(j);
+        for (int i = 0; i < array.length; i++) {
+            for (int j = 0; j < array.length; j++) {
+                if (array[i] == array[j] && i != j) {
                     deleteCounter++;
-                    arrayEnd--;
+                    removeFromList(j);
+                    removeDuplicates();
                 }
             }
         }
-        // gibt die Anzahl der gelöschten Elemente zurück
+
         return deleteCounter;
 
     }
 
     public void sortList() {
 
-        int indexOfSmallestValue = 0;
+        // Minimum bestimmen
+        int indexOfSmallest = 0;
+
         for (int i = 0; i < array.length; i++) {
-            for (int j = i+1; j < array.length; j++) {
-                if (array[j] < array[i]) {
-                    indexOfSmallestValue = array[j];
+            int smallest = array[i];
+
+            for (int j = i; j < array.length; j++) {
+                if (smallest > array[j]) {
+                    smallest = array[j];
+                    indexOfSmallest = j;
+
+                    int temp = array[i];
+                    array[i] = array[indexOfSmallest];
+                    array[indexOfSmallest] = temp;
                 }
-                else {
-                    indexOfSmallestValue = array[i];
-                }
+
             }
+
         }
 
-        System.out.println(indexOfSmallestValue);
+
+        System.out.println(Arrays.toString(array));
+        System.out.println(indexOfSmallest);
 
 
     }
