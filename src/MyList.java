@@ -76,35 +76,34 @@ public class MyList {
     // Methode löscht doppelte Elemente
     public int removeDuplicates() {
 
-
-        // Variable zur Speicherung der aktuellen Array-Länge
-
         // Variable zur Speicherung der Anzahl von gelöschten Elementen
-        int deleteCounter = 0;
+        int arrayLengthBefore = array.length;
 
         // prüft, ob Elemente doppelt vorkommen und löscht diese
         for (int i = 0; i < array.length; i++) {
             for (int j = 0; j < array.length; j++) {
                 if (array[i] == array[j] && i != j) {
-                    deleteCounter++;
                     removeFromList(j);
                     removeDuplicates();
                 }
             }
         }
-
-        return deleteCounter;
+        // gibt die Anzahl der entfernten Elemente zurück
+        return arrayLengthBefore - array.length;
 
     }
 
+    // Methode sortiert Array von kleinstem Wert zu größtem Wert
     public void sortList() {
 
-        // Minimum bestimmen
-        int indexOfSmallest = 0;
+        // Variable zur Speicherung des kleinsten Wertes deklarieren
+        int indexOfSmallest;
 
         for (int i = 0; i < array.length; i++) {
+            // erster Wert ist zunächst kleinster Wert
             int smallest = array[i];
 
+            // prüft, welcher der kleinste Wert ist und tauscht diesen mit dem i-ten Wert
             for (int j = i; j < array.length; j++) {
                 if (smallest > array[j]) {
                     smallest = array[j];
@@ -118,11 +117,7 @@ public class MyList {
             }
 
         }
-
-
         System.out.println(Arrays.toString(array));
-        System.out.println(indexOfSmallest);
-
 
     }
 }

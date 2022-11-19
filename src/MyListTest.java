@@ -7,7 +7,7 @@ public class MyListTest {
 
         myList.addToList(3, 1);
 
-        //myList.removeFromList(0);
+        myList.removeFromList(0);
         int deletedItems = myList.removeDuplicates();
         System.out.println("Entfernte Elemente: " + deletedItems);
 
