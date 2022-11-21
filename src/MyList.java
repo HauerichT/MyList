@@ -1,8 +1,9 @@
-import java.util.Arrays;
-
 public class MyList {
+
+    // Instanzvariable
     int[] array;
 
+    // Konstruktor
     public MyList(int[] array) {
 
         if (array == null || array.length == 0) {
@@ -10,6 +11,13 @@ public class MyList {
             System.exit(0);
         }
         this.array = array;
+    }
+
+    public void printArray() {
+        for (int i = 0; i < array.length; i++) {
+            System.out.print(array[i] + " ");
+        }
+        System.out.println();
     }
 
     // Methode fügt item an Stelle index hinzu
@@ -40,8 +48,7 @@ public class MyList {
         // weist der Variable array das neue Array zu
         this.array = arrayNew;
 
-        System.out.println("Neues Element zu Array hinzugefügt:");
-        System.out.println(Arrays.toString(arrayNew));
+        printArray();
     }
 
     // Methode löscht Element an der Stelle index
@@ -69,8 +76,7 @@ public class MyList {
         // weist der Variable array das neue Array zu
         this.array = arrayNew;
 
-        System.out.println("Element aus Array entfernt:");
-        System.out.println(Arrays.toString(arrayNew));
+        printArray();
     }
 
     // Methode löscht doppelte Elemente
@@ -117,7 +123,21 @@ public class MyList {
             }
 
         }
-        System.out.println(Arrays.toString(array));
+        printArray();
 
+    }
+
+    // Methode prüft alle Kombinationen von drei Zahlen im Array, deren Summe gleich die übergebene Zahl ist
+    public void kombiZahl (int zahl) {
+        for (int i = 0; i < array.length; i++) {
+            for (int j = i+1; j < array.length; j++) {
+                for (int k = j+1; k < array.length; k++) {
+                    // prüft, ob die Summe der Kombination gleich die übergebene Zahl ist
+                    if (array[i] + array[j] + array[k] == zahl) {
+                        System.out.println("Kombination: " + array[i] + " + " + array[j] + " + " + array[k] + " = " + zahl);
+                    }
+                }
+            }
+        }
     }
 }
