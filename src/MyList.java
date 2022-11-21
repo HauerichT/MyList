@@ -115,6 +115,7 @@ public class MyList {
                     smallest = array[j];
                     indexOfSmallest = j;
 
+                    // bringt kleinsten Wert an i-te Stelle
                     int temp = array[i];
                     array[i] = array[indexOfSmallest];
                     array[indexOfSmallest] = temp;
@@ -140,4 +141,5 @@ public class MyList {
             }
         }
     }
+
 }
